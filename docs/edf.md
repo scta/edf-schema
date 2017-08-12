@@ -1,6 +1,7 @@
 # Header
 
-`<header>
+```xml
+<header>
   <authorUri>http://scta.info/resource/NicolasDeDinkelsbuhl</authorUri>
   <dc:title>Nicolas de Dinkelsbuhl Lectura Mellicensis</dc:title>
   <dc:description>Description</dc:title>
@@ -41,11 +42,13 @@
       <!-- dc:description could be a global attribute allowed on every resource -->
     </manifestation>
   </hasManifestations>
-</header>`
+</header>
+```
 
 # Body
 
-`<body id="dinkelsbuhllectura"> <!-- identical to commentary id; a redundancy that could be reduced -->
+```xml
+<body id="dinkelsbuhllectura"> <!-- identical to commentary id; a redundancy that could be reduced -->
   <div id="nddm-librum4" class="toplevel" type="librum" subtype="librum4">
     <head>Liber IV</head>
     <div id="nddm-l4d1" type="distinctio" subtype="librum4-distinctio1">
@@ -55,15 +58,16 @@
       </div>
     </div>
   </div>
-</div>`
+</div>
+```
 
 ## Div
 
 ## Item
 
+```xml
 
-
-`<item id='nddm-l4d1p1q1' type="quaestio">
+<item id='nddm-l4d1p1q1' type="quaestio">
   <shortTitle>Quaestio 1</shortTitle>
   <title>Liber IV, d. 1, p. 1, q. 1</title>
   <!-- dc:description could be a global attribute allowed on every resource -->
@@ -81,4 +85,6 @@
       <folio>5r</folio> <!-- col. a -->
     </manifestation>
   </hasManifestations>
-</item>`
+</item>
+
+```

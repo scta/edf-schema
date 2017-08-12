@@ -1,6 +1,11 @@
+
+---
+Depreciated
+---
 # Header
 
-`<header>
+```xml
+<header>
   <authorName>Nicolas de Dinkelsbuhl</authorName>
   <commentaryName>Nicolas de Dinkelsbuhl Lectura Mellicensis</commentaryName>
   <commentaryid>dinkelsbuhllectura</commentaryid>
@@ -40,12 +45,14 @@
       <title>BSB Clm 8358</title>
     </witness>
   </hasWitnesses>
-</header>`
+</header>
+```
 
 
 # Body
 
-`<div id="body">
+```xml
+<div id="body">
   <div id="nddm-librum4" class="toplevel" type="librum" subtype="librum4">
     <head>Liber IV</head>
     <div id="nddm-l4d1" type="distinctio" subtype="librum4-distinctio1">
@@ -55,13 +62,15 @@
       </div>
     </div>
   </div>
-</div>`
+</div>
+```
 
 ## Div
 
 ## Item
 
-`<item type="quaestio">
+```xml
+<item type="quaestio">
   <fileName filestem="nddm-l4d1p1q1"/>
   <title>Liber IV, d. 1, p. 1, q. 1</title>
   <questionTitle>Utrum in quolibet hominum statu fuerint aliqua sacramenta.</questionTitle>
@@ -78,6 +87,6 @@
       <folio>5r</folio> <!-- col. a -->
     </witness>
   </hasWitnesses>
-</item>`
+</item>
 
-`
+```
