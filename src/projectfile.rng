@@ -90,6 +90,11 @@
               <element name="initial">
                 <text/>
               </element>
+              <optional>
+                <element name="date">
+                  <text/>
+                </element>
+              </optional>
             </element>
           </zeroOrMore>
           <text/>
@@ -97,6 +102,11 @@
     </zeroOrMore>
       <optional>
         <element name="rcsid">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <element name="date">
           <text/>
         </element>
       </optional>
