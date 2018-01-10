@@ -31,9 +31,6 @@
       <element name="textfilesdir">
         <text/>
       </element>
-      <element name="webbase">
-        <text/>
-      </element>
       <element name="questionListSource">
         <text/>
       </element>
