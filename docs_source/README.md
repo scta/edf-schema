@@ -5,5 +5,3 @@
 
 ## 1.0.0 (codename: RickyBobby) (Status in Progress)
 * [docs](edf.md)
-
-Test

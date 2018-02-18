@@ -1,7 +1,3 @@
-
----
-Depreciated
----
 # Header
 
 ```xml
