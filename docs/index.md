@@ -1,8 +1,3 @@
----
-layout: post
-title: Index
----
-
 # EDF Docs
 ## 0.0.0 (codename: Projectfiles)
 * [docs](project-desc-file.md)
