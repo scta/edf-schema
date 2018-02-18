@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:dc="http://dublincore.org/2012/06/14/dcelements#"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+  <element name="edf" xmlns="http://relaxng.org/ns/structure/1.0">
+    <element name="header">
+      <element name="authorUri">
+        <text/>
+      </element>
+      <element name="dc:title">
+        <text/>
+      </element>
+      <zeroOrMore>
+        <element name="dc:description">
+          <text/>
+        </element>
+        <element name="parentWorkGroup">
+          <text/>
+        </element>
+        <element name="parentWork">
+          <text/>
+        </element>
+        <element name="attribution">
+          <element name="quesitonListSource">
+            <text/>
+          </element>
+          <element name="questionListOriginalEditor">
+            <text/>
+          </element>
+          <element name="questionListEncoder">
+            <text/>
+          </element>
+        </element>
+        <element name="sponsors">
+          <zeroOrMore>
+            <element name="sponsor">
+              <attribute name="id">
+                <text/>
+              </attribute>
+              <element name="name">
+                <text/>
+              </element>
+              <element name="logo">
+                <text/>
+              </element>
+              <element name="link">
+                <text/>
+              </element>
+            </element>
+          </zeroOrMore>
+        </element>
+        <element name="hasManifestations">
+          <zeroOrMore>
+            <element name="manifestation">
+              <attribute name="id">
+                <text/>
+              </attribute>
+              <element name="slug">
+                <text/>
+              </element>
+              <element name="dc:title">
+                <text/>
+              </element>
+              <zeroOrMore>
+                <element name="dc:description">
+                  <text/>
+                </element>
+              </zeroOrMore>
+            </element>
+          </zeroOrMore>
+      </element>
+    </zeroOrMore>
+    </element>
+    <element name="body">
+      <text/>
+    </element>
+  </element>
+  </start>
+</grammar>
