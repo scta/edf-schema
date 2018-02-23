@@ -15,7 +15,9 @@ To create EDF that follows the 0.0.0 specification, add the following schema dec
 
 `<?xml-model href="https://raw.githubusercontent.com/scta/edf-schema/master/src/projectfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>`
 
-To create EDF that follows the draft 1.0.0 specifications, add the following schema declaration at the top of your XML file, just below `<?xml version="1.0" encoding="UTF-8"?>`. Not that this is working draft and schema rules are subject to change.
+To create EDF that follows the draft 1.0.0 specifications, add the following schema declaration at the top of your XML file, just below `<?xml version="1.0" encoding="UTF-8"?>`. Note that this is working draft and schema rules are subject to change.
+
+`<?xml-model href="https://raw.githubusercontent.com/scta/edf-schema/master/src/edf.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>`
 
 Oxygen will begin prompting you for required fields. See the above specifications for EDF creation rules.
 
