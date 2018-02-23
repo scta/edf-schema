@@ -1,6 +1,9 @@
 # Summary
 
-* [Introduction to Expression Description Files](README.md)
+* [Introduction to Expression Description Files](README.md#edf-docs)
+  * [Setting up and Creating an EDF](README.md#setting-up-and-creating-an-edf)
+  * [Contributing an EDF](README.md#contributing-an-edf)
+
 * [0.0.0 Codename: project_files](project-desc-file.md)
   * [Header](project-desc-file.md#header)
     * [Identification Metadata](project-desc-file.md#identification-metadata)

@@ -1,35 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../src/edf.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<!-- https://github.com/scta/edf-schema/blob/master/src/edf.rng -->
 <edf xmlns:dc="http://dublincore.org/2012/06/14/dcelements#">
-  <header>
-    <creationStmt>
-      <date></date>
-      <scehma name="" version="" url=""></scehma>
-    </creationStmt>
-  </header>
+ <header>
+   <creationStmt>
+     <date></date>
+     <scehma name="edf" version="1.0.0" url="https://github.com/scta/edf-schema/blob/master/src/edf.rng"/>
+   </creationStmt>
+ </header> 
   <body>
-   <div id="">
-     <dc:title></dc:title>
-     <dc:creator></dc:creator>
-     <dc:description></dc:description>
-     <parentWorkGroup></parentWorkGroup>
-     <parentWork></parentWork>
-     <manifestations>
-       <manifestation id="">
-         <slug></slug>
-         <dc:title></dc:title>
-       </manifestation>
-     </manifestations>
-     <div id="">
-       <dc:title></dc:title>
-       <questionTitle></questionTitle>
-       <item>
-         <dc:title></dc:title>
-         <manifestations>
-           <manifestation ref=""></manifestation>
-         </manifestations>
-       </item>
-     </div>
-   </div>
+    <div id="wodehamordinatio" type="ordinatio">
+      <dc:title>Ordinatio</dc:title>
+      <dc:creator>http://scta.info/resource/Wodeham</dc:creator>
+      <dc:description></dc:description>
+      <parentWorkGroup>sententia</parentWorkGroup>
+      <parentWork></parentWork>
+      <manifestations>
+        <manifestation id="V">
+          <slug>vatlat1911</slug>
+          <dc:title>This text in Vat lat 1911, fo. 10-120</dc:title>
+        </manifestation>
+        <manifestation id="Va">
+          <slug></slug>
+          <dc:title></dc:title>
+        </manifestation>
+      </manifestations>
+      <div id="aw-l1">
+        <dc:title>Liber I</dc:title>
+        <questionTitle>De Deo</questionTitle>
+        <div id="a1-l1">
+          <dc:title>Distinctio 1</dc:title>
+          <questionTitle>Uti et Frui</questionTitle>
+          <item id="">
+            <dc:title>Quaestio 1</dc:title>
+            <questionTitle>Utrum ...</questionTitle>
+            <manifestations>
+              <manifestation ref="#V">
+                <folio>1</folio>
+                
+              </manifestation>
+            </manifestations>
+          </item>
+        </div>
+        
+      </div>
+    </div>
   </body>
 </edf>

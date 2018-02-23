@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="project-desc-file.html" />
+    <link rel="next" href="./" />
     
     
 
@@ -87,9 +87,9 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
-                <a href="./">
+                <a href="./#edf-docs">
             
                     
                     Introduction to Expression Description Files
@@ -97,6 +97,38 @@
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="./">
+            
+                <a href="./#setting-up-and-creating-an-edf">
+            
+                    
+                    Setting up and Creating an EDF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="./">
+            
+                <a href="./#contributing-an-edf">
+            
+                    
+                    Contributing an EDF
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -460,14 +492,21 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="edf-docs">EDF Docs</h1>
-<h2 id="000-codename-projectfiles">0.0.0 (codename: Projectfiles)</h2>
+<p>EDFs are an SCTA community standard to standardize the description of scholastic works as Expressions and to connect these expressions to their historical manifestations.</p>
+<p>There are currently two specifications for EDFs, the 0.0.0 specifications which is currently in operation and the working draft of the 1.0.0 specifications.</p>
 <ul>
-<li><a href="project-desc-file.html">docs</a></li>
+<li><a href="project-desc-file.html">0.0.0 (codename: Projectfiles)</a></li>
+<li><a href="edf.html">1.0.0 (codename: red_leopard) (Status in Progress)</a></li>
 </ul>
-<h2 id="100-codename-redleopard-status-in-progress">1.0.0 (codename: red_leopard) (Status in Progress)</h2>
-<ul>
-<li><a href="edf.html">docs</a></li>
-</ul>
+<h2 id="setting-up-and-creating-an-edf">Setting Up and Creating an EDF</h2>
+<p>With the aid of good XML editor, creating and EDF is fairly straightforward.</p>
+<p>To create EDF that follows the 0.0.0 specification, add the following schema declaration at the top of your XML file, just below <code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</code>.</p>
+<p><code>&lt;?xml-model href=&quot;https://raw.githubusercontent.com/scta/edf-schema/master/src/projectfile.rng&quot; type=&quot;application/xml&quot; schematypens=&quot;http://relaxng.org/ns/structure/1.0&quot;?&gt;</code></p>
+<p>To create EDF that follows the draft 1.0.0 specifications, add the following schema declaration at the top of your XML file, just below <code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</code>. Not that this is working draft and schema rules are subject to change.</p>
+<p>Oxygen will begin prompting you for required fields. See the above specifications for EDF creation rules.</p>
+<h2 id="contributing-an-edf">Contributing an EDF</h2>
+<p>EDF files can be contributed to the SCTA community, by submitting a pull request the github <code>scta-projectiles</code> repository: <a href="https://github.com/scta/scta-projectfiles" target="_blank">https://github.com/scta/scta-projectfiles</a></p>
+<p>To submit a pull request, &quot;fork the above repository&quot;, add your newly created EDF, to the directory, and submit a pull request. The SCTA community will then review your request and merge it into the master repository.</p>
 
                                 
                                 </section>
@@ -496,7 +535,7 @@
             
                 
                 
-                <a href="project-desc-file.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 0.0.0 Codename: project_files">
+                <a href="./#setting-up-and-creating-an-edf" class="navigation navigation-next navigation-unique" aria-label="Next page: Setting up and Creating an EDF">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -507,7 +546,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction to Expression Description Files","level":"1.1","depth":1,"next":{"title":"0.0.0 Codename: project_files","level":"1.2","depth":1,"path":"project-desc-file.md","ref":"project-desc-file.md","articles":[{"title":"Header","level":"1.2.1","depth":2,"anchor":"#header","path":"project-desc-file.md","ref":"project-desc-file.md#header","articles":[{"title":"Identification Metadata","level":"1.2.1.1","depth":3,"anchor":"#identification-metadata","path":"project-desc-file.md","ref":"project-desc-file.md#identification-metadata","articles":[]},{"title":"Attribution Metadata","level":"1.2.1.2","depth":3,"anchor":"#attribution-metadata","path":"project-desc-file.md","ref":"project-desc-file.md#attribution-metadata","articles":[]},{"title":"Manifestation Metadata","level":"1.2.1.3","depth":3,"anchor":"#manifestation-metadata","path":"project-desc-file.md","ref":"project-desc-file.md#manifestation-metadata","articles":[]}]},{"title":"Body","level":"1.2.2","depth":2,"anchor":"#body","path":"project-desc-file.md","ref":"project-desc-file.md#body","articles":[{"title":"Div","level":"1.2.2.1","depth":3,"anchor":"#div","path":"project-desc-file.md","ref":"project-desc-file.md#div","articles":[]},{"title":"Item","level":"1.2.2.2","depth":3,"anchor":"#item","path":"project-desc-file.md","ref":"project-desc-file.md#item","articles":[]}]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2018-02-19T12:12:32.052Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-23T15:27:52.551Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction to Expression Description Files","level":"1.1","depth":1,"next":{"title":"Setting up and Creating an EDF","level":"1.1.1","depth":2,"anchor":"#setting-up-and-creating-an-edf","path":"README.md","ref":"README.md#setting-up-and-creating-an-edf","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2018-02-23T17:07:20.103Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-23T17:07:32.670Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
