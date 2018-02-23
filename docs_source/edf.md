@@ -1,4 +1,25 @@
+# EDF Root
+
+EDF file must contain and EDF root, which contains precisely two children `<header>` and `<body>`
+
+```xml
+<edf>
+  <header/>
+  <body/>
+</edf>
+```
+
 # Header
+
+A header contains a `creationStmt`
+
+```xml
+<header>
+  <creationStmt/>
+</header>
+
+```
+
 
 ## Creation Stmt
 
@@ -6,7 +27,7 @@ The creationStmt should contain information the file itself (e.g. when it was cr
 
 ```xml
 <creationStmt>
-  <date></date>
+  <date/>
   <schema name="edf" version="1.0.0"/>
 </creationStmt>
 ```

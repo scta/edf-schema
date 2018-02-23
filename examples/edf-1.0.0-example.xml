@@ -3,44 +3,33 @@
 <edf xmlns:dc="http://dublincore.org/2012/06/14/dcelements#">
   <header>
     <creationStmt>
-      <date>February 2, 2018</date>
-      <scehma name="edf" version="1.0.0" url="../src/edf.rng" />
+      <date></date>
+      <scehma name="" version="" url=""></scehma>
     </creationStmt>
   </header>
   <body>
-    <div id="wodehamordiatio"> <!-- top level expression / top level structureCollection -->
-      <dc:title>Ordinatio</dc:title>
-      <dc:creator>http://scta.info/resource/Wodeham</dc:creator>
-      <dc:description>This is the ordinatio of Wodeham</dc:description>
-      <parentWorkGroup>http://scta.info/resource/Sententia</parentWorkGroup>
-      <parentWork>http://scta.info/resource/WodehamCommentary</parentWork>
-      <manifestations>
-        <manifestation id="V">
-          <slug>vatlat509</slug>
-          <dc:title>Vat. Lat. 509, manifestations, ff. 1-100</dc:title> <!-- title for manifestation, not codex -->
-        </manifestation>
-      </manifestations>
-      <attribution>
-        <quesitonListSource></quesitonListSource>
-        <questionListOriginalEditor></questionListOriginalEditor>
-        <questionListEncoder></questionListEncoder>
-        <sponsors></sponsors>
-      </attribution>
-      <div id="wo-l1">
-        <dc:title>Liber I</dc:title>
-        <div id="wo-l1d1">
-          <dc:title>Distinctio I</dc:title>
-          <item id="wo-l1d1q1">
-            <dc:title>Quaestio 1</dc:title>
-            <questionTitle>Utrum...</questionTitle>
-            <manifestations>
-              <manifestation ref="#T">
-                <folio>1v</folio>
-              </manifestation>
-            </manifestations>
-          </item>
-        </div>
-      </div>
-    </div>
+   <div id="">
+     <dc:title></dc:title>
+     <dc:creator></dc:creator>
+     <dc:description></dc:description>
+     <parentWorkGroup></parentWorkGroup>
+     <parentWork></parentWork>
+     <manifestations>
+       <manifestation id="">
+         <slug></slug>
+         <dc:title></dc:title>
+       </manifestation>
+     </manifestations>
+     <div id="">
+       <dc:title></dc:title>
+       <questionTitle></questionTitle>
+       <item>
+         <dc:title></dc:title>
+         <manifestations>
+           <manifestation ref=""></manifestation>
+         </manifestations>
+       </item>
+     </div>
+   </div>
   </body>
 </edf>

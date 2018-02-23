@@ -442,11 +442,23 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="header">Header</h1>
+                                <h1 id="edf-root">EDF Root</h1>
+<p>EDF file must contain and EDF root, which contains precisely two children <code>&lt;header&gt;</code> and <code>&lt;body&gt;</code></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">edf</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">header</span>/&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">edf</span>&gt;</span>
+</code></pre>
+<h1 id="header">Header</h1>
+<p>A header contains a <code>creationStmt</code></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">creationStmt</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+</code></pre>
 <h2 id="creation-stmt">Creation Stmt</h2>
 <p>The creationStmt should contain information the file itself (e.g. when it was created, what schema it is validated against, etc)</p>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">creationStmt</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">date</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">date</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">date</span>/&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">schema</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;edf&quot;</span> <span class="hljs-attr">version</span>=<span class="hljs-string">&quot;1.0.0&quot;</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">creationStmt</span>&gt;</span>
 </code></pre>
@@ -654,7 +666,7 @@ da-liber1, da-liber2, da-liber3, etc.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.0.0 Codename: red_leopard","level":"1.3","depth":1,"next":{"title":"Header","level":"1.3.1","depth":2,"anchor":"#header","path":"edf.md","ref":"edf.md#header","articles":[{"title":"creationStmt","level":"1.3.1.1","depth":3,"anchor":"#creationStmt","path":"edf.md","ref":"edf.md#creationStmt","articles":[]}]},"previous":{"title":"Item","level":"1.2.2.2","depth":3,"anchor":"#item","path":"project-desc-file.md","ref":"project-desc-file.md#item","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"edf.md","mtime":"2018-02-23T13:45:55.903Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-23T13:48:57.071Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.0.0 Codename: red_leopard","level":"1.3","depth":1,"next":{"title":"Header","level":"1.3.1","depth":2,"anchor":"#header","path":"edf.md","ref":"edf.md#header","articles":[{"title":"creationStmt","level":"1.3.1.1","depth":3,"anchor":"#creationStmt","path":"edf.md","ref":"edf.md#creationStmt","articles":[]}]},"previous":{"title":"Item","level":"1.2.2.2","depth":3,"anchor":"#item","path":"project-desc-file.md","ref":"project-desc-file.md#item","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"edf.md","mtime":"2018-02-23T15:24:36.172Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-23T15:24:54.974Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
