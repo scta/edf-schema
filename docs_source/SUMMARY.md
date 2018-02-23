@@ -12,7 +12,7 @@
 * [1.0.0 Codename: red_leopard](edf.md)
   * [EDF Root](edf.md#edf-root)
     * [Header](edf.md#header)
-      * [creationStmt](edf.md#creationStmt)
+      * [creationStmt](edf.md#creationstmt)
     * [Body](edf.md#body)
       * [Top Level Div](edf.md#top-level-div)
         * [Top Level Manifestation Blocks](edf.md#top-level-manifestation-blocks)
