@@ -7,76 +7,227 @@
   <start>
   <element name="edf" xmlns="http://relaxng.org/ns/structure/1.0">
     <element name="header">
-      <element name="authorUri">
-        <text/>
-      </element>
-      <element name="dc:title">
-        <text/>
-      </element>
-      <zeroOrMore>
-        <element name="dc:description">
+      <element name="creationStmt">
+        <element name="date">
           <text/>
         </element>
-        <element name="parentWorkGroup">
-          <text/>
+        <element name="scehma">
+          <attribute name="name"/>
+          <attribute name="version"/>
+          <attribute name="url"/>
         </element>
-        <element name="parentWork">
-          <text/>
-        </element>
-        <element name="attribution">
-          <element name="quesitonListSource">
-            <text/>
-          </element>
-          <element name="questionListOriginalEditor">
-            <text/>
-          </element>
-          <element name="questionListEncoder">
-            <text/>
-          </element>
-        </element>
-        <element name="sponsors">
-          <zeroOrMore>
-            <element name="sponsor">
-              <attribute name="id">
-                <text/>
-              </attribute>
-              <element name="name">
-                <text/>
-              </element>
-              <element name="logo">
-                <text/>
-              </element>
-              <element name="link">
-                <text/>
-              </element>
-            </element>
-          </zeroOrMore>
-        </element>
-        <element name="hasManifestations">
-          <zeroOrMore>
-            <element name="manifestation">
-              <attribute name="id">
-                <text/>
-              </attribute>
-              <element name="slug">
-                <text/>
-              </element>
-              <element name="dc:title">
-                <text/>
-              </element>
-              <zeroOrMore>
-                <element name="dc:description">
-                  <text/>
-                </element>
-              </zeroOrMore>
-            </element>
-          </zeroOrMore>
       </element>
-    </zeroOrMore>
     </element>
     <element name="body">
-      <text/>
+      <ref name="topLevelExpression"/>
     </element>
   </element>
   </start>
+  
+  <define name="topLevelExpression">
+    <element name="div">
+      <attribute name="id"/>
+      <optional>
+        <attribute name="class"/>
+      </optional>
+      <optional>
+        <attribute name="type"/>
+      </optional>
+      <element name="dc:title">
+        <text/>
+      </element>
+      <element name="dc:creator">
+        <text/>
+      </element>
+      <element name="dc:description">
+        <text/>
+      </element>
+      <optional>
+        <element name="dc:date">
+          <text/>
+        </element>
+      </optional>
+      <element name="parentWorkGroup">
+        <text/>
+      </element>
+      <element name="parentWork">
+        <text/>
+      </element>
+      <optional>
+        <element name="questionTitle">
+          <text/>
+        </element>
+      </optional>
+      <ref name="topLevelManifestations"/>
+      <zeroOrMore>
+        <ref name="attribution"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <choice>
+          <ref name="structureCollection"/>
+          <ref name="structureItem"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  
+  <define name="structureCollection">
+    <element name="div">
+      <attribute name="id"/>
+      <optional>
+        <attribute name="class"/>
+      </optional>
+      <optional>
+        <attribute name="type"/>
+      </optional>
+      <element name="dc:title">
+        <text/>
+      </element>
+      <optional>
+        <element name="dc:creator">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <element name="dc:description">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <element name="dc:date">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <element name="questionTitle">
+          <text/>
+        </element>
+      </optional>
+      <zeroOrMore>
+        <ref name="attribution"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <choice>
+          <ref name="structureCollection"/>
+          <ref name="structureItem"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="structureItem">
+    <element name="item">
+      <optional>
+        <attribute name="id"/>
+      </optional>
+      <optional>
+        <attribute name="type"/>
+      </optional>
+      <element name="dc:title">
+        <text/>
+      </element>
+      <optional>
+        <element name="dc:creator">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <element name="dc:description">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <element name="dc:date">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <element name="questionTitle">
+          <optional>
+            <element name="unclear">
+              <text/>
+            </element>
+          </optional>
+          <text/>
+        </element>
+      </optional>
+      <zeroOrMore>
+        <ref name="attribution"/>
+      </zeroOrMore>
+      <optional>
+        <ref name="itemLevelManifestations"/>
+      </optional>
+    </element>
+  </define>
+  
+  <define name="attribution">
+    <element name="attribution">
+      <element name="quesitonListSource">
+        <text/>
+      </element>
+      <element name="questionListOriginalEditor">
+        <text/>
+      </element>
+      <element name="questionListEncoder">
+        <text/>
+      </element>
+      <element name="sponsors">
+        <zeroOrMore>
+          <element name="sponsor">
+            <attribute name="id">
+              <text/>
+            </attribute>
+            <element name="name">
+              <text/>
+            </element>
+            <element name="logo">
+              <text/>
+            </element>
+            <element name="link">
+              <text/>
+            </element>
+          </element>
+        </zeroOrMore>
+      </element>
+    </element>
+  </define>
+  <define name="topLevelManifestations">
+    <element name="manifestations">
+      <zeroOrMore>
+        <element name="manifestation">
+          <attribute name="id">
+            <text/>
+          </attribute>
+          <element name="slug">
+            <text/>
+          </element>
+          <element name="dc:title">
+            <text/>
+          </element>
+          <zeroOrMore>
+            <element name="dc:description">
+              <text/>
+            </element>
+          </zeroOrMore>
+        </element>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="itemLevelManifestations">
+    <element name="manifestations">
+      <zeroOrMore>
+        <element name="manifestation">
+          <attribute name="ref"/>
+          <zeroOrMore>
+            <element name="folio">
+              <optional>
+                <attribute name="c"></attribute>
+              </optional>
+              
+              <text/>
+            </element>
+          </zeroOrMore>
+        </element>
+      </zeroOrMore>
+    </element>
+  </define>
 </grammar>
