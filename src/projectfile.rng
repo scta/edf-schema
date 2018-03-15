@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammar 
+<grammar
   xmlns="http://relaxng.org/ns/structure/1.0"
   xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
   xmlns:dc="http://dublincore.org/2012/06/14/dcelements#"
@@ -115,6 +115,11 @@
       <attribute name="id">
         <text/>
       </attribute>
+      <optional>
+        <element name="head">
+            <text/>
+        </element>
+      </optional>
       <zeroOrMore>
         <choice>
           <ref name="structureItem"/>
@@ -124,7 +129,7 @@
     </element>
   </element>
   </start>
-  
+
   <define name="structureCollection">
     <element name="div">
       <attribute name="id"/>
@@ -191,7 +196,7 @@
                   <optional>
                     <attribute name="c"></attribute>
                   </optional>
-                  
+
                   <text/>
                 </element>
               </zeroOrMore>
@@ -200,6 +205,6 @@
         </element>
       </zeroOrMore>
     </element>
-    
+
   </define>
 </grammar>
