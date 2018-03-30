@@ -146,9 +146,7 @@
         <text/>
       </element>
       <optional>
-        <element name="questionTitle">
-            <text/>
-        </element>
+        <ref name="questionTitle"/>
       </optional>
       <zeroOrMore>
         <choice>
@@ -177,14 +175,12 @@
         <text/>
       </element>
       <optional>
-        <element name="questionTitle">
-          <optional>
-            <element name="unclear">
-              <text/>
-            </element>
-          </optional>
+        <element name="lemma">
           <text/>
         </element>
+      </optional>
+      <optional>
+        <ref name="questionTitle"/>
       </optional>
       <zeroOrMore>
         <element name="hasWitnesses">
@@ -206,5 +202,29 @@
       </zeroOrMore>
     </element>
 
+  </define>
+  <define name="questionTitle">
+    <element name="questionTitle">
+      <interleave>
+        <zeroOrMore>
+          <element name="unclear">
+            <text/>
+          </element>
+        </zeroOrMore>
+        <zeroOrMore>
+          <element name="quote">
+            <text/>
+          </element>
+        </zeroOrMore>
+        <zeroOrMore>
+          <element name="supplied">
+            <text/>
+          </element>
+        </zeroOrMore>
+        <zeroOrMore>
+          <text/>
+        </zeroOrMore>  
+      </interleave>
+    </element>
   </define>
 </grammar>
