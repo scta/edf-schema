@@ -23,7 +23,8 @@ A header contains a `creationStmt`
 
 ## Creation Stmt
 
-The creationStmt should contain information the file itself (e.g. when it was created, what schema it is validated against, etc)
+The `creationStmt` should contain information about the file itself (e.g. when
+it was created, what schema it is validated against, etc)
 
 ```xml
 <creationStmt>
