@@ -47,21 +47,23 @@ Body is the bulk of the file which records the text hierarchy
 
 The Top Level Div is the highest level of the expression, also called the top level expression.
 Because it is the top level it is allowed certain properties not allowed to child divs.
-For example only the top level div can contain a parentWork or parentWork group value,
+For example only the top level div can contain a parentWork or parentWorkGroup field,
 because only top level expressions can be children of a work or workGroup.
 
 ```xml
-<div id="wodehamabbreviatio" type="abbreviatio"> <!-- top level expression -->
+<div id="wodehamabbreviatio" type="abbreviatio">
+  <!-- top level expression -->
   <!-- global optional fields could be applied -->
   <dc:title>Nicolas de Dinkelsbuhl Lectura Mellicensis</dc:title>
-  <dc:description>Description</dc:title>
-  <dc:creator>http://scta.info/resource/NicolasDeDinkelsbuhl</authorUri>
+  <dc:description>Description</dc:description>
+  <dc:creator>http://scta.info/resource/NicolasDeDinkelsbuhl</dc:creator>
   <!-- specific top level metadata could be applied -->
   <parentWorkGroup>http://scta.info/resource/sententia</parentWorkGroup>
   <!-- attribution or sponsorship could be applied for an entire range of texts,
-  and overwritten by attributions lower in the hierarchy -->
+       and overwritten by attributions lower in the hierarchy -->
   <manifestations>
     <!-- top level manifestation block -->
+  </manifestations>
   <attribution>
     <!-- see attribution block -->
   </attribution>
