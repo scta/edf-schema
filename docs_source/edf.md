@@ -77,7 +77,7 @@ Top level manifestation blocks record all existing manifestations (manuscripts, 
 
 Top Level Manifestation Blocks and Item Level Manifestation Blocks work in tandem to identify which sections of the hierarchy are represented in which manifestations.
 
-For example, we need not redundantly identify manifestations for every level of the hierarchy. Rather we can record that a manifestation exists for a given item. This information can then "bubble up", meaning, at any level of the hierarchy we can deduce if there is existing manifestation of that level, but seeing if there are any manifestations for item children with that div. If there, then we can conclude this section has this manifestation.
+For example, we need not redundantly identify manifestations for every level of the hierarchy. Rather we can record that a manifestation exists for a given item. This information can then "bubble up", meaning, at any level of the hierarchy we can deduce if there is existing manifestation of that level by seeing if there are any manifestations for item children with that div. If that is that case, then we can conclude this section has that manifestation.
 
 This need arises often in cases where a manuscript X only contains book two of a four book sequence. In this case, all the items within the book two ranges, will identify a presence in manuscript X through a reference to the top level manifestation block. From there it can be concluded that Book 2 has a manifestation in manuscript X, but we can also conclude that manuscript X does not contain manifestations of books 1, 3 or 4.
 

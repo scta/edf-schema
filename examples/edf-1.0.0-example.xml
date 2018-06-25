@@ -5,7 +5,10 @@
  <header>
    <creationStmt>
      <date></date>
-     <scehma name="edf" version="1.0.0" url="https://github.com/scta/edf-schema/blob/master/src/edf.rng"/>
+     <scehma
+         name="edf"
+         version="1.0.0"
+         url="https://github.com/scta/edf-schema/blob/master/src/edf.rng"/>
    </creationStmt>
  </header> 
   <body>
