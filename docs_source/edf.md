@@ -4,14 +4,20 @@ The *Expression Description File* (EDF) presents an editorial interpretation of 
 
 This means that for example a title or the structure reflected in the file should not reflect the structure or content of any one particular manuscript witness.
 
-**[PARAGRAPH ABOUT SHORT AND FULL ID'S]**
+References to existing entities in the SCTA system is done with the URL of the given resource. So a reference to Adam Wodeham would be http://scta.info/resource/Wodeham. In the EDF files the namespace `sctar` (*SCTA Resource*) will preface any such resource ids.
+
+The EDF files are used for constructing entities in the system. When references are made to already existing entities, the `sctar:` namespace is used. But in the case of ids of expressions or structural divs, the id does not refer to something existing before the EDF file is ingested, but is rather created during ingestion, and will therefore occur without the namespace.
 
 # EDF Root
 
 EDF file must contain and EDF root, which contains precisely two children `<header>` and `<body>`.
 
+`edf` **MUST** declare the included namespaces.
+
 ```xml
-<edf>
+<edf 
+  xmlns:dc="https://dublincore.org/2012/06/14/dcelements#"
+  xmlns:sctar="https://scta.info/resource/">
   <header/>
   <body/>
 </edf>
@@ -73,16 +79,16 @@ because only top level expressions can be children of a work or workGroup.
 
 ## Rules
 
-- **MUST** contain `@id`.
+- **MUST** contain `@id` (resource id).
 - **MAY** contain `@type`. It **MUST** contain SCTA supported values for expression types.
 - **MUST** contain a `titleStmt` as a child node.
 - `titleStmt` **MUST** contain at least one of `structureTitle`, `alternativeTitle`, `descriptiveTitle`, and `questionTitle` according to the description in the section below.
-- **MUST** contain at least one `contributor` element.
-- `contributor` **SHOULD** contain `@role`. It **MUST** contain SCTA supported values for contributor roles. The content **MUST** be a SCTA resource URL (e.g. "http://scta.info/resource/Wodeham").
-- **MAY** contain `dc:description`. It cannot contain any child elements, and should be of limited extent.
+- **MUST** contain at least one `contributor` element (resource id).
+- `contributor` **SHOULD** contain `@role`. It **MUST** contain SCTA supported values for contributor roles.
+- **MAY** contain `dc:description`. It cannot contain any child elements, and should be no more than 250 words.
 - **MUST** contain `work`, which contains a unique id to a work.
 - `work` **MAY** have `@isCanonical`.
-- `work` **MUST** have `@parentWorkGroup` when it has `@isCanonical`.
+- `work` **MUST** have `@parentWorkGroup` (resource id) when it has `@isCanonical`.
 - `dc:date` **MUST** contain a [EDTF](https://www.loc.gov/standards/datetime/pre-submission.html#level1) compliant date.
 
 
@@ -96,7 +102,7 @@ because only top level expressions can be children of a work or workGroup.
 ## Example
 
 ```xml
-<div id="wodehamordinatio" type="ordinatio">
+<div id="wodehamordinatio" type="sctar:ordinatio">
   <titleStmt>
     <structureTitle>Commentarius sententiarum</structureTitle>
     <alternativeTitle>Ordinatio</alternativeTitle>
@@ -104,9 +110,9 @@ because only top level expressions can be children of a work or workGroup.
     <questionTitle />
   </titleStmt>
   <dc:description>Description of the expression.</dc:description>
-  <contributor role="author">Wodeham</contributor>
-  <work isCanonical="true" parentWorkGroup="sententia">w-wodehamordinatio</work>
-  <dc:date></dc:date>
+  <contributor role="author">sctar:Wodeham</contributor>
+  <work isCanonical="true" parentWorkGroup="sctar:sententia">sctar:w-wodehamordinatio</work>
+  <dc:date>133u</dc:date>
   <manifestations>
     <!-- top level manifestation block -->
   </manifestations>
@@ -132,7 +138,7 @@ The `titleStmt` contains a set of elements indicating different types of titles 
 
 The order of the elements determines the default title by the first child node. If the `structureTitle` is empty, the following field will give the title. The structure of the items **MUST** be the following:
 
-```
+```xml
 <titleStmt>
     <structureTitle />
     <alternativeTitle />
@@ -181,14 +187,14 @@ There is no title given explicitly for each manifestation, as that will be pulle
 ```xml
 <manifestations>
   <manifestation siglum="T">
-    <codexId>bnf</codexId>
+    <codexId>sctar:bnf1039</codexId>
     <dc:description>Short description of the codex manifestation.</dc:description>
   </manifestation>
   <manifestation siglum="B">
-    <codexId>clm2940</codexId>
+    <codexId>sctar:clm2940</codexId>
   </manifestation>
   <manifestation siglum="Ba">
-    <codexId>clm8358</codexId>
+    <codexId>sctar:clm8358</codexId>
   </manifestation>
 </manifestations>
 ```
@@ -209,14 +215,14 @@ A `div` at any level below the top-level `div` reflect the structure of the text
 ## Example
 
 ```xml
-<div id="ow-l1" type="liber">
+<div id="ow-l1" type="sctar:liber">
   <titleStmt>
     <structureTitle n="1" label="liber">Liber 1</structureTitle>
   </titleStmt>
   <dc:description>
     Here is a short description of liber 1 of the text.
   </dc:description>
-  <div id="ow-l1d1" type="liber1-distinctio1">
+  <div id="ow-l1d1" type="sctar:liber1-distinctio1">
     <titleStmt>
       <structureTitle n="1" label="distinctio">Liber 1</structureTitle>
       <questionTitle>Uti et frui</questionTitle>
@@ -244,7 +250,7 @@ Transcriptions for a given text need to be divided into directories with the ide
 Files within the item directory by default are named with the `item@id` plus a prefix. But this behavior can be overwritten in the `transcriptions.xml` file.
 
 ## Rules
-- **MUST** have `@id` (short resource id).
+- **MUST** have `@id`.
 - **MAY** have `@type`.
 - **MAY** contain `titleStmt` respecting its possible elements and rules.
 - **MAY** contain `attribution` respecting its possible elements and rules.
@@ -255,7 +261,7 @@ Possible values in item types??
 ## Example
 
 ```xml
-<item id='nddm-l4d1p1q1' type="quaestio">
+<item id='nddm-l4d1p1q1' type="sctar:quaestio">
   <titleStmt>
     <structureTitle n="1" label="quaestio">Quaestio 1</structureTitle>structureTitle>
     <questionTitle>
