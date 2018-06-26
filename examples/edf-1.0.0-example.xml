@@ -4,49 +4,65 @@
 <edf xmlns:dc="http://dublincore.org/2012/06/14/dcelements#">
  <header>
    <creationStmt>
-     <date></date>
-     <scehma
+     <schema
          name="edf"
          version="1.0.0"
-         url="https://github.com/scta/edf-schema/blob/master/src/edf.rng"/>
+         url="https://raw.githubusercontent.com/scta/edf-schema/1.0.0/src/edf.rng"/>
    </creationStmt>
  </header> 
   <body>
     <div id="wodehamordinatio" type="ordinatio">
-      <dc:title>Ordinatio</dc:title>
-      <dc:creator>http://scta.info/resource/Wodeham</dc:creator>
-      <dc:description></dc:description>
-      <parentWorkGroup>sententia</parentWorkGroup>
-      <parentWork></parentWork>
+      <titleStmt>
+        <structureTitle>Super IV Libros Sententiarum</structureTitle>
+        <alternativeTitle>Scriptum</alternativeTitle>
+        <descriptiveTitle>De conscientia</descriptiveTitle>
+        <questionTitle>Utrum...</questionTitle>
+      </titleStmt>
+      <contributor role="author">http://scta.info/resource/Wodeham</contributor>
+      <dc:description>This is Adam Wodeham's Ordinatio</dc:description>
+      <work isCanonical="true" parentWorkGroup="sententiae">w-wodehamordinatio</work>
+      <dc:date></dc:date>
       <manifestations>
-        <manifestation id="V">
-          <slug>vatlat1911</slug>
-          <dc:title>This text in Vat lat 1911, fo. 10-120</dc:title>
+        <manifestation siglum="V">
+          <codexId>vatlat955</codexId>
+          <dc:description>This is a description</dc:description>
         </manifestation>
-        <manifestation id="Va">
-          <slug></slug>
-          <dc:title></dc:title>
+        <manifestation siglum="Va">
+          <codexId></codexId>
         </manifestation>
       </manifestations>
-      <div id="aw-l1">
-        <dc:title>Liber I</dc:title>
-        <questionTitle>De Deo</questionTitle>
-        <div id="a1-l1">
-          <dc:title>Distinctio 1</dc:title>
-          <questionTitle>Uti et Frui</questionTitle>
-          <item id="">
-            <dc:title>Quaestio 1</dc:title>
-            <questionTitle>Utrum ...</questionTitle>
+      <div id="aw-l1" type="liber1">
+        <titleStmt>
+          <structureTitle n="1" label="liber1">Liber 1</structureTitle>
+          <descriptiveTitle>De Deo</descriptiveTitle>
+        </titleStmt>
+        <div id="aw-l1d1" type="liber1-distinctio1">
+          <titleStmt>
+            <structureTitle n="1" label="distinctio">Distinctio 1</structureTitle>
+            <descriptiveTitle>Uti et Frui</descriptiveTitle>
+          </titleStmt>
+          <item id="aw-l1d1q1" type="quaestio">
+            <titleStmt>
+              <structureTitle n="1" label="quaestio">Quaestio 1</structureTitle>
+              <questionTitle>Utrum..</questionTitle>
+            </titleStmt>
             <manifestations>
               <manifestation ref="#V">
-                <folio>1</folio>
-                
+                <folio>1r</folio>
+                <folio>1v</folio>
+                <folio>2r</folio>
+              </manifestation>
+              <manifestation ref="#Va">
+                <folio>10r</folio>
+                <folio>10v</folio>
+                <folio>11r</folio>
               </manifestation>
             </manifestations>
           </item>
         </div>
-        
+
       </div>
     </div>
   </body>
 </edf>
+      

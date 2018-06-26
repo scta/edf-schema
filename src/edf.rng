@@ -8,10 +8,7 @@
   <element name="edf" xmlns="http://relaxng.org/ns/structure/1.0">
     <element name="header">
       <element name="creationStmt">
-        <element name="date">
-          <text/>
-        </element>
-        <element name="scehma">
+        <element name="schema">
           <attribute name="name"/>
           <attribute name="version"/>
           <attribute name="url"/>
@@ -26,6 +23,7 @@
   
   <define name="topLevelExpression">
     <element name="div">
+      <a:documentation>Top Level Division</a:documentation>
       <attribute name="id"/>
       <optional>
         <attribute name="class"/>
@@ -33,31 +31,60 @@
       <optional>
         <attribute name="type"/>
       </optional>
-      <element name="dc:title">
-        <text/>
+      <element name="titleStmt">
+        <optional>
+        <element name="structureTitle">
+          <optional>
+            <attribute name="n">
+              <text/>
+            </attribute>
+            <attribute name="label">
+              <text/>
+            </attribute>
+          </optional>
+          <text/>
+        </element>
+        </optional>
+        <optional>
+          <element name="alternativeTitle">
+            <text/>
+          </element>
+        </optional>
+        <optional>
+          <element name="descriptiveTitle">
+            <text/>
+          </element>
+        </optional>
+        <optional>
+          <element name="questionTitle">
+            <text/>
+          </element>
+        </optional>
       </element>
-      <element name="dc:creator">
+      <element name="contributor">
+        <attribute name="role">
+          <text></text>
+        </attribute>
         <text/>
       </element>
       <element name="dc:description">
         <text/>
       </element>
-      <optional>
-        <element name="dc:date">
-          <text/>
-        </element>
-      </optional>
-      <element name="parentWorkGroup">
+      <element name="work">
+        <optional>
+          <attribute name="isCanonical"></attribute>
+        </optional>
+        <!-- parentWorkGroup attribute is required if "isCanonical" value is true -->
+        <optional>
+          <attribute name="parentWorkGroup"></attribute>
+        </optional>
         <text/>
       </element>
-      <element name="parentWork">
+      <element name="dc:date">
         <text/>
       </element>
-      <optional>
-        <element name="questionTitle">
-          <text/>
-        </element>
-      </optional>
+      
+      
       <ref name="topLevelManifestations"/>
       <zeroOrMore>
         <ref name="attribution"/>
@@ -80,8 +107,35 @@
       <optional>
         <attribute name="type"/>
       </optional>
-      <element name="dc:title">
-        <text/>
+      <element name="titleStmt">
+        <optional>
+          <element name="structureTitle">
+            <optional>
+              <attribute name="n">
+                <text/>
+              </attribute>
+              <attribute name="label">
+                <text/>
+              </attribute>
+            </optional>
+            <text/>
+          </element>
+        </optional>
+        <optional>
+          <element name="alternativeTitle">
+            <text/>
+          </element>
+        </optional>
+        <optional>
+          <element name="descriptiveTitle">
+            <text/>
+          </element>
+        </optional>
+        <optional>
+          <element name="questionTitle">
+            <text/>
+          </element>
+        </optional>
       </element>
       <optional>
         <element name="dc:creator">
@@ -122,8 +176,35 @@
       <optional>
         <attribute name="type"/>
       </optional>
-      <element name="dc:title">
-        <text/>
+      <element name="titleStmt">
+        <optional>
+          <element name="structureTitle">
+            <optional>
+              <attribute name="n">
+                <text/>
+              </attribute>
+              <attribute name="label">
+                <text/>
+              </attribute>
+            </optional>
+            <text/>
+          </element>
+        </optional>
+        <optional>
+          <element name="alternativeTitle">
+            <text/>
+          </element>
+        </optional>
+        <optional>
+          <element name="descriptiveTitle">
+            <text/>
+          </element>
+        </optional>
+        <optional>
+          <element name="questionTitle">
+            <text/>
+          </element>
+        </optional>
       </element>
       <optional>
         <element name="dc:creator">
@@ -161,13 +242,13 @@
   
   <define name="attribution">
     <element name="attribution">
-      <element name="quesitonListSource">
+      <element name="ListSource">
         <text/>
       </element>
-      <element name="questionListOriginalEditor">
+      <element name="ListOriginalEditor">
         <text/>
       </element>
-      <element name="questionListEncoder">
+      <element name="ListEncoder">
         <text/>
       </element>
       <element name="sponsors">
@@ -194,13 +275,10 @@
     <element name="manifestations">
       <zeroOrMore>
         <element name="manifestation">
-          <attribute name="id">
+          <attribute name="siglum">
             <text/>
           </attribute>
-          <element name="slug">
-            <text/>
-          </element>
-          <element name="dc:title">
+          <element name="codexId">
             <text/>
           </element>
           <zeroOrMore>

@@ -493,167 +493,275 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="edf-root">EDF Root</h1>
-<p>EDF file must contain and EDF root, which contains precisely two children <code>&lt;header&gt;</code> and <code>&lt;body&gt;</code></p>
-<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">edf</span>&gt;</span>
+                                <h1 id="introduction">Introduction</h1>
+<p>The <em>Expression Description File</em> (EDF) presents an editorial interpretation of a text. </p>
+<p>This means that for example a title or the structure reflected in the file should not reflect the structure or content of any one particular manuscript witness.</p>
+<p>References to existing entities in the SCTA system is done with the URL of the given resource. So a reference to Adam Wodeham would be <a href="http://scta.info/resource/Wodeham" target="_blank">http://scta.info/resource/Wodeham</a>. In the EDF files the namespace <code>sctar</code> (<em>SCTA Resource</em>) will preface any such resource ids.</p>
+<p>The EDF files are used for constructing entities in the system. When references are made to already existing entities, the <code>sctar:</code> namespace is used. But in the case of ids of expressions or structural divs, the id does not refer to something existing before the EDF file is ingested, but is rather created during ingestion, and will therefore occur without the namespace.</p>
+<h1 id="edf-root">EDF Root</h1>
+<p>EDF file must contain and EDF root, which contains precisely two children <code>&lt;header&gt;</code> and <code>&lt;body&gt;</code>.</p>
+<p><code>edf</code> <strong>MUST</strong> declare the included namespaces.</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">edf</span> 
+  <span class="hljs-attr">xmlns:dc</span>=<span class="hljs-string">&quot;https://dublincore.org/2012/06/14/dcelements#&quot;</span>
+  <span class="hljs-attr">xmlns:sctar</span>=<span class="hljs-string">&quot;https://scta.info/resource/&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">header</span>/&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">body</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">edf</span>&gt;</span>
 </code></pre>
 <h1 id="header">Header</h1>
-<p>A header contains a <code>creationStmt</code></p>
+<h2 id="description">Description</h2>
+<p>A header contains a <code>creationStmt</code>.</p>
+<h2 id="example">Example</h2>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">creationStmt</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
 </code></pre>
-<h2 id="creation-stmt">Creation Stmt</h2>
-<p>The creationStmt should contain information the file itself (e.g. when it was created, what schema it is validated against, etc)</p>
+<h1 id="creation-stmt">Creation Stmt</h1>
+<h2 id="description">Description</h2>
+<p>The <code>creationStmt</code> should contain information about the file itself (e.g. when
+it was created, what schema it is validated against, etc).</p>
+<h2 id="example">Example</h2>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">creationStmt</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">date</span>/&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">schema</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;edf&quot;</span> <span class="hljs-attr">version</span>=<span class="hljs-string">&quot;1.0.0&quot;</span>/&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">schema</span> 
+      <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;edf&quot;</span> 
+      <span class="hljs-attr">version</span>=<span class="hljs-string">&quot;1.0.0&quot;</span>
+      <span class="hljs-attr">url</span>=<span class="hljs-string">&quot;https://raw.githubusercontent.com/scta/edf-schema/1.0.0/src/edf.rng&quot;</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">creationStmt</span>&gt;</span>
 </code></pre>
 <h1 id="body">Body</h1>
-<p>Body is the bulk of the file which records the text hierarchy</p>
+<h2 id="description">Description</h2>
+<p>Body is the bulk of the file which records the text hierarchy.</p>
+<h2 id="examples">Examples</h2>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
   <span class="hljs-comment">&lt;!-- contains nested divs --&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 </code></pre>
-<h2 id="top-level-div">Top Level Div</h2>
+<h1 id="top-level-div">Top Level Div</h1>
+<h2 id="description">Description</h2>
 <p>The Top Level Div is the highest level of the expression, also called the top level expression.
 Because it is the top level it is allowed certain properties not allowed to child divs.
-For example only the top level div can contain a parentWork or parentWork group value,
+For example only the top level div can contain a parentWork or parentWorkGroup field,
 because only top level expressions can be children of a work or workGroup.</p>
-<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;wodehamabbreviatio&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;abbreviatio&quot;</span>&gt;</span> <span class="hljs-comment">&lt;!-- top level expression --&gt;</span>
-  <span class="hljs-comment">&lt;!-- global optional fields could be applied --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">dc:title</span>&gt;</span>Nicolas de Dinkelsbuhl Lectura Mellicensis<span class="hljs-tag">&lt;/<span class="hljs-name">dc:title</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">dc:description</span>&gt;</span>Description<span class="hljs-tag">&lt;/<span class="hljs-name">dc:title</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">dc:creator</span>&gt;</span>http://scta.info/resource/NicolasDeDinkelsbuhl<span class="hljs-tag">&lt;/<span class="hljs-name">authorUri</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- specific top level metadata could be applied --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">parentWorkGroup</span>&gt;</span>http://scta.info/resource/sententia<span class="hljs-tag">&lt;/<span class="hljs-name">parentWorkGroup</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- attribution or sponsorship could be applied for an entire range of texts,
-  and overwritten by attributions lower in the hierarchy --&gt;</span>
+<h2 id="rules">Rules</h2>
+<ul>
+<li><strong>MUST</strong> contain <code>@id</code> (resource id).</li>
+<li><strong>MAY</strong> contain <code>@type</code>. It <strong>MUST</strong> contain SCTA supported values for expression types.</li>
+<li><strong>MUST</strong> contain a <code>titleStmt</code> as a child node.</li>
+<li><code>titleStmt</code> <strong>MUST</strong> contain at least one of <code>structureTitle</code>, <code>alternativeTitle</code>, <code>descriptiveTitle</code>, and <code>questionTitle</code> according to the description in the section below.</li>
+<li><strong>MUST</strong> contain at least one <code>contributor</code> element (resource id).</li>
+<li><code>contributor</code> <strong>SHOULD</strong> contain <code>@role</code>. It <strong>MUST</strong> contain SCTA supported values for contributor roles.</li>
+<li><strong>MAY</strong> contain <code>dc:description</code>. It cannot contain any child elements, and should be no more than 250 words.</li>
+<li><strong>MUST</strong> contain <code>work</code>, which contains a unique id to a work.</li>
+<li><code>work</code> <strong>MAY</strong> have <code>@isCanonical</code>.</li>
+<li><code>work</code> <strong>MUST</strong> have <code>@parentWorkGroup</code> (resource id) when it has <code>@isCanonical</code>.</li>
+<li><code>dc:date</code> <strong>MUST</strong> contain a <a href="https://www.loc.gov/standards/datetime/pre-submission.html#level1" target="_blank">EDTF</a> compliant date.</li>
+</ul>
+<p><strong>NOTES</strong> </p>
+<ul>
+<li>What to do when creating EDF with unregistered resources?</li>
+<li>Possible values for <code>@parentWorkGroup</code>? </li>
+<li>How to determine whether there is already a work id for an EDF?</li>
+<li>Possible <code>div/@types</code> values?</li>
+<li>Paragraph on where we use short-ids, and where to find them...</li>
+</ul>
+<h2 id="example">Example</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;wodehamordinatio&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;sctar:ordinatio&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">titleStmt</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">structureTitle</span>&gt;</span>Commentarius sententiarum<span class="hljs-tag">&lt;/<span class="hljs-name">structureTitle</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">alternativeTitle</span>&gt;</span>Ordinatio<span class="hljs-tag">&lt;/<span class="hljs-name">alternativeTitle</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">descriptiveTitle</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">questionTitle</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">titleStmt</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">dc:description</span>&gt;</span>Description of the expression.<span class="hljs-tag">&lt;/<span class="hljs-name">dc:description</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">contributor</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;author&quot;</span>&gt;</span>sctar:Wodeham<span class="hljs-tag">&lt;/<span class="hljs-name">contributor</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">work</span> <span class="hljs-attr">isCanonical</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">parentWorkGroup</span>=<span class="hljs-string">&quot;sctar:sententia&quot;</span>&gt;</span>sctar:w-wodehamordinatio<span class="hljs-tag">&lt;/<span class="hljs-name">work</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">dc:date</span>&gt;</span>133u<span class="hljs-tag">&lt;/<span class="hljs-name">dc:date</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">manifestations</span>&gt;</span>
     <span class="hljs-comment">&lt;!-- top level manifestation block --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">manifestations</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">attribution</span>&gt;</span>
     <span class="hljs-comment">&lt;!-- see attribution block --&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">attribution</span>&gt;</span>
   <span class="hljs-comment">&lt;!-- lower level divs and items to be added here --&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
-<h3 id="top-level-manifestation-blocks">Top Level Manifestation Blocks</h3>
+<h2 id="work-field">Work field</h2>
+<p>The field <code>work</code> reflects the FRBR concept of a Work. This field indicates which work the expression is an expression of, as there can be different expressions of a single work. The <code>@isCanonical</code> will indicate whether the expression described by the EDF is considered the &quot;canonical&quot; or &quot;default&quot; expression of the work in different contexts (e.g. search results). The value of the <code>work</code> element indicates the short id of the Work. The content of the field <strong>MUST</strong> be unique. In order to ensure the uniqueness of the id, it is recommended as best practice to use the id of the canonical expression prefixed by &quot;w-&quot;, e.g. &quot;w-wodehamordinatio&quot;.</p>
+<p>The <code>work</code> does two things, as it both creates the entity of the work in the graph and indicate where in a hierarchy that belongs to by the <code>@parentWorkGroup</code> id. </p>
+<p><code>work</code>: If there is already another expression description file that is accepted as the canonical expression description type (<code>@isCanonical=&apos;true&apos;</code>), the <code>@parentWorkGroup</code> is not required, as it is already indicated on the canonical EDF.</p>
+<h1 id="titlestmt">titleStmt</h1>
+<h2 id="description">Description</h2>
+<p>The <code>titleStmt</code> contains a set of elements indicating different types of titles on the section of text.</p>
+<p>The order of the elements determines the default title by the first child node. If the <code>structureTitle</code> is empty, the following field will give the title. The structure of the items <strong>MUST</strong> be the following:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">titleStmt</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">structureTitle</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">alternativeTitle</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">descriptiveTitle</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">questionTitle</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">titleStmt</span>&gt;</span>
+</code></pre>
+<p>Use of different title fields: </p>
+<ul>
+<li><code>structureTitle</code> indicates a place in the structure of the text, such as &quot;Article 3&quot;. </li>
+<li><code>alternativeTitle</code> indicates an alternative name of a given question. There can be 0 to many alternative titles listed</li>
+<li><code>descriptiveTitle</code> indicates a descriptive statement on the subject of the text. </li>
+<li><code>questionTitle</code> indicates a name of a given question.</li>
+</ul>
+<h2 id="rules">Rules</h2>
+<ul>
+<li><code>titleStmt</code> <strong>MUST</strong> contain at least one of <code>structureTitle</code>, <code>alternativeTitle</code>, <code>descriptiveTitle</code>, and <code>questionTitle</code> according to the description in the section below.</li>
+<li><code>titleStmt</code> <strong>MAY ONLY</strong> contain 0 or 1 instance of <code>structureTitle</code>, <code>alternativeTitle</code>, <code>descriptiveTitle</code>.</li>
+<li><code>titleStmt</code> <strong>MAY</strong> contain any number of <code>alternativeTitle</code> elements.</li>
+<li><code>structureTitle</code> <strong>MAY</strong> containt <code>@n</code> and <code>@label</code> to indicate in a machine-readable the position in the structure of the work.</li>
+</ul>
+<h1 id="top-level-manifestation-blocks">Top Level Manifestation Blocks</h1>
+<h2 id="description">Description</h2>
 <p>Top level manifestation blocks record all existing manifestations (manuscripts, printed books, born digital manifestations) for an expression. Information provided is also used as a reference point for item level manifestation recognition, reducing redundancy.</p>
 <p>Top Level Manifestation Blocks and Item Level Manifestation Blocks work in tandem to identify which sections of the hierarchy are represented in which manifestations.</p>
-<p>For example, we need not redundantly identify manifestations for every level of the hierarchy. Rather we can record that a manifestation exists for a given item. This information can then &quot;bubble up&quot;, meaning, at any level of the hierarchy we can deduce if there is existing manifestation of that level, but seeing if there are any manifestations for item children with that div. If there, then we can conclude this section has this manifestation.</p>
+<p>For example, we need not redundantly identify manifestations for every level of the hierarchy. Rather we can record that a manifestation exists for a given item. This information can then &quot;bubble up&quot;, meaning, at any level of the hierarchy we can deduce if there is existing manifestation of that level by seeing if there are any manifestations for item children with that div. If that is that case, then we can conclude this section has that manifestation.</p>
 <p>This need arises often in cases where a manuscript X only contains book two of a four book sequence. In this case, all the items within the book two ranges, will identify a presence in manuscript X through a reference to the top level manifestation block. From there it can be concluded that Book 2 has a manifestation in manuscript X, but we can also conclude that manuscript X does not contain manifestations of books 1, 3 or 4.</p>
-<p>See Item Level Manifestation Blocks Below</p>
-<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">manifestations</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">manifestation</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;T&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">slug</span>&gt;</span>bnf<span class="hljs-tag">&lt;/<span class="hljs-name">slug</span>&gt;</span> <span class="hljs-comment">&lt;!--need to change this when manifest changes --&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">dc:title</span>&gt;</span>TM 536<span class="hljs-tag">&lt;<span class="hljs-name">dc:title</span>&gt;</span> <span class="hljs-comment">&lt;!-- this is the title of the manifestation, not the CODEX! --&gt;</span>
-      <span class="hljs-comment">&lt;!-- dc:description could be a global attribute allowed on every resource --&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">manifestation</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">manifestation</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;B&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">slug</span>&gt;</span>clm2940<span class="hljs-tag">&lt;/<span class="hljs-name">slug</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">dc:title</span>&gt;</span>BSB Clm 2940<span class="hljs-tag">&lt;/<span class="hljs-name">dc:title</span>&gt;</span>
-      <span class="hljs-comment">&lt;!-- dc:description could be a global attribute allowed on every resource --&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">manifestation</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">manifestation</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;Ba&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">slug</span>&gt;</span>clm8358<span class="hljs-tag">&lt;/<span class="hljs-name">slug</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">dc:title</span>&gt;</span>BSB Clm 8358<span class="hljs-tag">&lt;/<span class="hljs-name">dc:title</span>&gt;</span>
-      <span class="hljs-comment">&lt;!-- dc:description could be a global attribute allowed on every resource --&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">manifestation</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;/<span class="hljs-name">manifestations</span>&gt;</span>
-</code></pre>
-<h2 id="intermediate-level-divs">Intermediate Level Divs</h2>
+<p>See Item Level Manifestation Blocks Below.</p>
+<p>There is no title given explicitly for each manifestation, as that will be pulled from the codex manifestation title in the Codex Description File referenced by the <code>codexId</code>.</p>
+<h2 id="rules">Rules</h2>
 <ul>
-<li>dc:title<ul>
-<li>This should be a short title. It is recommended that aggregators build two kinds of titles, a short title and a full title. Short titles can be pulled directly from the <code>dc:title</code> field. Long titles, should be the concatenation of all ancestor short titles, with a delimiter, such as &quot;Liber IV, Distinctio 1, Quaestio 1&quot;</li>
+<li><strong>MUST</strong> contain at least one <code>manifestation</code>.</li>
+<li><code>manifestation</code> <strong>MUST</strong> contain a <code>codexId</code> (resource short id).</li>
+<li><code>manifestation</code> <strong>MAY</strong> contain a <code>dc:description</code>.</li>
 </ul>
-</li>
+<h2 id="example">Example</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">manifestations</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">manifestation</span> <span class="hljs-attr">siglum</span>=<span class="hljs-string">&quot;T&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">codexId</span>&gt;</span>sctar:bnf1039<span class="hljs-tag">&lt;/<span class="hljs-name">codexId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dc:description</span>&gt;</span>Short description of the codex manifestation.<span class="hljs-tag">&lt;/<span class="hljs-name">dc:description</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">manifestation</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">manifestation</span> <span class="hljs-attr">siglum</span>=<span class="hljs-string">&quot;B&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">codexId</span>&gt;</span>sctar:clm2940<span class="hljs-tag">&lt;/<span class="hljs-name">codexId</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">manifestation</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">manifestation</span> <span class="hljs-attr">siglum</span>=<span class="hljs-string">&quot;Ba&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">codexId</span>&gt;</span>sctar:clm8358<span class="hljs-tag">&lt;/<span class="hljs-name">codexId</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">manifestation</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">manifestations</span>&gt;</span>
+</code></pre>
+<h1 id="intermediate-level-divs">Intermediate Level Divs</h1>
+<h2 id="description">Description</h2>
+<p>A <code>div</code> at any level below the top-level <code>div</code> reflect the structure of the text.</p>
+<h2 id="rules">Rules</h2>
+<ul>
+<li><strong>MAY</strong> contain <code>titleStmt</code> respecting its possible elements and rules.</li>
+<li><strong>MAY</strong> contain <code>attribution</code> respecting its possible elements and rules.</li>
+<li><strong>MAY</strong> contain <code>dc:description</code>.</li>
+<li><strong>MAY NOT</strong> contain <code>manifestations</code>. </li>
 </ul>
-<pre><code class="lang-xml">  <span class="hljs-comment">&lt;!-- begin hierarchy --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;nddm-librum4&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;librum4&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">dc:title</span>&gt;</span>Liber IV<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">questionTitle</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">questionTitle</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">dc:description</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
-    <span class="hljs-comment">&lt;!-- attribution block can be added here, which will override parent attribution block for all of book 4 --&gt;</span>
-    <span class="hljs-comment">&lt;!-- note that manifestations block is not allowed in intermediate div blocks --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;nddm-l4d1&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;librum4-distinctio1&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">dc:title</span>&gt;</span>Distinctio 1<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">questionTitle</span>&gt;</span>uti et frui<span class="hljs-tag">&lt;/<span class="hljs-name">questionTitle</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">dc:description</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;nddm-l4d1p1&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">dc:title</span>&gt;</span>Pars 1<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">questionTitle</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">questionTitle</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">dc:description</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- contains items as lowest level --&gt;</span>
-
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<h2 id="example">Example</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;ow-l1&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;sctar:liber&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">titleStmt</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">structureTitle</span> <span class="hljs-attr">n</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;liber&quot;</span>&gt;</span>Liber 1<span class="hljs-tag">&lt;/<span class="hljs-name">structureTitle</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">titleStmt</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">dc:description</span>&gt;</span>
+    Here is a short description of liber 1 of the text.
+  <span class="hljs-tag">&lt;/<span class="hljs-name">dc:description</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;ow-l1d1&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;sctar:liber1-distinctio1&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">titleStmt</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">structureTitle</span> <span class="hljs-attr">n</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;distinctio&quot;</span>&gt;</span>Liber 1<span class="hljs-tag">&lt;/<span class="hljs-name">structureTitle</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">questionTitle</span>&gt;</span>Uti et frui<span class="hljs-tag">&lt;/<span class="hljs-name">questionTitle</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">titleStmt</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;ow-l1d1p1&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">titleStmt</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">structureTitle</span> <span class="hljs-attr">n</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;pars&quot;</span>&gt;</span>Pars 1<span class="hljs-tag">&lt;/<span class="hljs-name">structureTitle</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">titleStmt</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- contains items as lowest level --&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
-<h2 id="item">Item</h2>
-<p>Item blocks are the lowest level text division that the EDF records.
-These division correspond to directory structure and file divisions.</p>
-<p>Transcriptions for a given text need to be divided into directories with the identical name as the <code>item@id</code>.
-Likewise, files within the item directory by default are named with the <code>item@id</code> plus a prefix. But this behavior can be overwritten in the <code>transcriptions.xml</code> file.</p>
+<h1 id="item">Item</h1>
+<h2 id="description">Description</h2>
+<p>Item blocks are the lowest level text division that the EDF records. </p>
+<p>These division correspond to directory structure and file divisions.
+Transcriptions for a given text need to be divided into directories with the identical name as the <code>item@id</code>.</p>
+<p>Files within the item directory by default are named with the <code>item@id</code> plus a prefix. But this behavior can be overwritten in the <code>transcriptions.xml</code> file.</p>
+<h2 id="rules">Rules</h2>
 <ul>
-<li>dc:title<ul>
-<li>This should be a short title. It is recommended that aggregators build two kinds of titles, a short title and a full title. Short titles can be pulled directly from the <code>dc:title</code> field. Long titles, should be the concatenation of all ancestor short titles, with a delimiter, such as &quot;Liber IV, Distinctio 1, Quaestio 1&quot;</li>
+<li><strong>MUST</strong> have <code>@id</code>.</li>
+<li><strong>MAY</strong> have <code>@type</code>.</li>
+<li><strong>MAY</strong> contain <code>titleStmt</code> respecting its possible elements and rules.</li>
+<li><strong>MAY</strong> contain <code>attribution</code> respecting its possible elements and rules.</li>
+<li><strong>MAY</strong> contain <code>dc:description</code>.</li>
 </ul>
-</li>
-</ul>
-<pre><code class="lang-xml">
-<span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&apos;nddm-l4d1p1q1&apos;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;quaestio&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">dc:title</span>&gt;</span>Quaestio 1<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">dc:description</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">questionTitle</span>&gt;</span>Utrum in quolibet hominum statu fuerint aliqua sacramenta.<span class="hljs-tag">&lt;/<span class="hljs-name">questionTitle</span>&gt;</span>
+<p>Possible values in item types??</p>
+<h2 id="example">Example</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&apos;nddm-l4d1p1q1&apos;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;sctar:quaestio&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">titleStmt</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">structureTitle</span> <span class="hljs-attr">n</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;quaestio&quot;</span>&gt;</span>Quaestio 1<span class="hljs-tag">&lt;/<span class="hljs-name">structureTitle</span>&gt;</span>structureTitle&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">questionTitle</span>&gt;</span>
+      Utrum in quolibet hominum statu fuerint aliqua sacramenta.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">questionTitle</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">titleStmt</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">dc:description</span>&gt;</span>Short description<span class="hljs-tag">&lt;/<span class="hljs-name">dc:description</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">manifestations</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- item level manifestation blocks go here --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">manifestation</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;#T&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">folio</span> <span class="hljs-attr">c</span>=<span class="hljs-string">&quot;b&quot;</span>&gt;</span>1r<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span> <span class="hljs-comment">&lt;!-- is there a more efficient way to do this --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>1v<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>2r<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>2v<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>3r<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>3v<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>4r<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>4v<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">folio</span> <span class="hljs-attr">c</span>=<span class="hljs-string">&quot;a&quot;</span>&gt;</span>5r<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span> <span class="hljs-comment">&lt;!-- col. a --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">manifestation</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">manifestations</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
 </code></pre>
 <h2 id="item-level-manifestation-blocks">Item Level Manifestation Blocks</h2>
+<h3 id="description">Description</h3>
 <p>Item level manifestation blocks note that that this item can be found in a given manifestation through a reference to a top level manifestation block.</p>
-<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">manifestations</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- item level manifestation blocks --&gt;</span>
-  <span class="hljs-comment">&lt;!-- FYI this could get very long, as an item could be represented in more than a hundred manuscripts.
-  This is not necessarily a problem just something to note.--&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">manifestation</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;#T&quot;</span>&gt;</span>
-    <span class="hljs-comment">&lt;!-- technically folio information could be retrieved from transcriptions;
-    but there are many cases where it is desirable to have this information,
-    even when no transcriptions exist. Perhaps this information can be moved to a dummy file,
-    standing in the place of a transcription file
-    --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">folio</span> <span class="hljs-attr">c</span>=<span class="hljs-string">&quot;b&quot;</span>&gt;</span>1r<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span> <span class="hljs-comment">&lt;!-- is there a more efficient way to do this --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>1v<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>2r<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>2v<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>3r<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>3v<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>4r<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>4v<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">folio</span> <span class="hljs-attr">c</span>=<span class="hljs-string">&quot;a&quot;</span>&gt;</span>5r<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span> <span class="hljs-comment">&lt;!-- col. a --&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">manifestation</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">hasManifestations</span>&gt;</span>
+<h3 id="rules">Rules</h3>
+<ul>
+<li><strong>MUST</strong> contain <code>@ref</code>.</li>
+<li><strong>MUST</strong> contain one or more <code>folio</code> elements.</li>
+<li><code>folio</code> <strong>MAY</strong> have <code>@c</code>.</li>
+</ul>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">manifestation</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;#T&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">folio</span> <span class="hljs-attr">c</span>=<span class="hljs-string">&quot;b&quot;</span>&gt;</span>1r<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>1v<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>2r<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>2v<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>3r<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>3v<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>4r<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">folio</span>&gt;</span>4v<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">folio</span> <span class="hljs-attr">c</span>=<span class="hljs-string">&quot;a&quot;</span>&gt;</span>5r<span class="hljs-tag">&lt;/<span class="hljs-name">folio</span>&gt;</span> <span class="hljs-comment">&lt;!-- col. a --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">manifestation</span>&gt;</span>
 </code></pre>
-<h2 id="attribution-block">Attribution Block</h2>
+<h1 id="attribution-block">Attribution Block</h1>
+<h2 id="description">Description</h2>
 <p>Any level of the hierarchy could take an attribution block and will apply to all children blocks.
 In most cases, only the top level block would take this. But when there are multiple parties
 responsible for different ranges with the hierarchy, lower level attribution blocks can be added.</p>
 <p>Responsibility here is intended to apply to the maintenance of the question list and structured hierarchy of the text, not to the transcription or edition of the text. This attributions is gleaned from the transcription TEI file</p>
+<h2 id="rules">Rules</h2>
+<ul>
+<li><strong>MAY</strong> contain <code>listEncoder</code>.</li>
+<li><strong>MAY</strong> contain <code>listOriginal</code>.</li>
+<li><strong>MAY</strong> contain <code>listSource</code>.</li>
+<li><strong>MAY</strong> contain <code>sponsors</code>.</li>
+<li><code>sponsors</code> <strong>MUST</strong> contain at least one <code>sponsor</code>.</li>
+<li><code>sponsor</code> <strong>MUST</strong> contain <code>name</code>.</li>
+<li><code>sponsor</code> <strong>MAY</strong> contain <code>logo</code> as a URL to an image file.</li>
+<li><code>sponsor</code> <strong>MAY</strong> contain <code>link</code> as a URL a supporting entity.</li>
+</ul>
+<h2 id="example">Example</h2>
 <pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">attribution</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">questionListSource</span>&gt;</span>Monica Article<span class="hljs-tag">&lt;/<span class="hljs-name">questionListSource</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">questionListOriginalEditor</span>&gt;</span>Monica Brinzei<span class="hljs-tag">&lt;/<span class="hljs-name">questionListOriginalEditor</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">questionListEncoder</span>&gt;</span>Jeffrey C. Witt<span class="hljs-tag">&lt;/<span class="hljs-name">questionListEncoder</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">listSource</span>&gt;</span>Monica Article<span class="hljs-tag">&lt;/<span class="hljs-name">listSource</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">listOriginalEditor</span>&gt;</span>Monica Brinzei<span class="hljs-tag">&lt;/<span class="hljs-name">listOriginalEditor</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">listEncoder</span>&gt;</span>Jeffrey C. Witt<span class="hljs-tag">&lt;/<span class="hljs-name">listEncoder</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">sponsors</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">sponsor</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;erc-thesis&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>ERC-THESIS project n&#xB0; 313339<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">logo</span>&gt;</span>https://www.mathi.uni-heidelberg.de/~venjakob/ERC_transparent.png<span class="hljs-tag">&lt;/<span class="hljs-name">logo</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">link</span>&gt;</span>http://www.thesis-project.ro/<span class="hljs-tag">&lt;/<span class="hljs-name">link</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">sponsor</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">sponsor</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">sponsor</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;irht&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>IRHT<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">logo</span>&gt;</span>http://cald.irht.cnrs.fr/images/logo_irht_cnrs.png<span class="hljs-tag">&lt;/<span class="hljs-name">logo</span>&gt;</span>
@@ -667,10 +775,10 @@ responsible for different ranges with the hierarchy, lower level attribution blo
 <p>The list of available values are maintained by the SCTA community. Values are hierarchical and flow down from works groups, works, etc.</p>
 <p>Thus, if a expression is listed as belonging to a particular workGroup, for example &quot;Sentences commentaries&quot;,
 and limited list of expressionType values becomes available, for example, &quot;ordinatio&quot;, &quot;reportatio&quot;, &quot;abbreviatio&quot;.</p>
-<p>Or, lower down librum1-distinctio1, librum1-distinctio2, &quot;librum1-prologus&quot; etc.</p>
-<p>In the case of the prologue, there is no need to classify this as both a &quot;prologus&quot; and a &quot;librum1-prologus&quot; because elsewhere &quot;librum1-prologus&quot; would have already been classified as a type of prologue.</p>
+<p>Or, lower down &quot;liber1-distinctio1&quot;, &quot;liber1-distinctio2&quot;, &quot;liber1-prologus&quot; etc.</p>
+<p>In the case of the prologue, there is no need to classify this as both a &quot;prologus&quot; and a &quot;liber1-prologus&quot; because elsewhere &quot;liber1-prologus&quot; would have already been classified as a type of prologue.</p>
 <p>If a top level expression is categorized as de anima commentary, different expression types become available, such as:
-da-liber1, da-liber2, da-liber3, etc.</p>
+&quot;da-liber1&quot;, &quot;da-liber2&quot;, &quot;da-liber3&quot;, etc.</p>
 <p>Additional optional properties could become available based on a expressionTypes.</p>
 <p>So for example if an sentences commentary is categorized as an &quot;abbreviatio&quot;, and <code>&lt;abbreviatedBy&gt;</code> property could become available.</p>
 <p>Such rules can be enforced by a schematron rules, but will require a detailed list of expression types.</p>
@@ -717,7 +825,7 @@ da-liber1, da-liber2, da-liber3, etc.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.0.0 Codename: red_leopard","level":"1.3","depth":1,"next":{"title":"EDF Root","level":"1.3.1","depth":2,"anchor":"#edf-root","path":"edf.md","ref":"edf.md#edf-root","articles":[{"title":"Header","level":"1.3.1.1","depth":3,"anchor":"#header","path":"edf.md","ref":"edf.md#header","articles":[{"title":"creationStmt","level":"1.3.1.1.1","depth":4,"anchor":"#creationstmt","path":"edf.md","ref":"edf.md#creationstmt","articles":[]}]},{"title":"Body","level":"1.3.1.2","depth":3,"anchor":"#body","path":"edf.md","ref":"edf.md#body","articles":[{"title":"Top Level Div","level":"1.3.1.2.1","depth":4,"anchor":"#top-level-div","path":"edf.md","ref":"edf.md#top-level-div","articles":[{"title":"Top Level Manifestation Blocks","level":"1.3.1.2.1.1","depth":5,"anchor":"#top-level-manifestation-blocks","path":"edf.md","ref":"edf.md#top-level-manifestation-blocks","articles":[]}]},{"title":"Intermediate Level Divs","level":"1.3.1.2.2","depth":4,"anchor":"#intermediate-level-divs","path":"edf.md","ref":"edf.md#intermediate-level-divs","articles":[]},{"title":"Item","level":"1.3.1.2.3","depth":4,"anchor":"#item","path":"edf.md","ref":"edf.md#item","articles":[{"title":"Item Level Manifestation Blocks","level":"1.3.1.2.3.1","depth":5,"anchor":"#item-level-manifestation-blocks","path":"edf.md","ref":"edf.md#item-level-manifestation-blocks","articles":[]}]},{"title":"Attribution Block","level":"1.3.1.2.4","depth":4,"anchor":"#attribution-block","path":"edf.md","ref":"edf.md#attribution-block","articles":[]},{"title":"Expression Types","level":"1.3.1.2.5","depth":4,"anchor":"#expression-types","path":"edf.md","ref":"edf.md#expression-types","articles":[]}]}]},"previous":{"title":"Item","level":"1.2.2.2","depth":3,"anchor":"#item","path":"project-desc-file.md","ref":"project-desc-file.md#item","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"edf.md","mtime":"2018-02-23T15:24:36.172Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-23T17:10:39.678Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.0.0 Codename: red_leopard","level":"1.3","depth":1,"next":{"title":"EDF Root","level":"1.3.1","depth":2,"anchor":"#edf-root","path":"edf.md","ref":"edf.md#edf-root","articles":[{"title":"Header","level":"1.3.1.1","depth":3,"anchor":"#header","path":"edf.md","ref":"edf.md#header","articles":[{"title":"creationStmt","level":"1.3.1.1.1","depth":4,"anchor":"#creationstmt","path":"edf.md","ref":"edf.md#creationstmt","articles":[]}]},{"title":"Body","level":"1.3.1.2","depth":3,"anchor":"#body","path":"edf.md","ref":"edf.md#body","articles":[{"title":"Top Level Div","level":"1.3.1.2.1","depth":4,"anchor":"#top-level-div","path":"edf.md","ref":"edf.md#top-level-div","articles":[{"title":"Top Level Manifestation Blocks","level":"1.3.1.2.1.1","depth":5,"anchor":"#top-level-manifestation-blocks","path":"edf.md","ref":"edf.md#top-level-manifestation-blocks","articles":[]}]},{"title":"Intermediate Level Divs","level":"1.3.1.2.2","depth":4,"anchor":"#intermediate-level-divs","path":"edf.md","ref":"edf.md#intermediate-level-divs","articles":[]},{"title":"Item","level":"1.3.1.2.3","depth":4,"anchor":"#item","path":"edf.md","ref":"edf.md#item","articles":[{"title":"Item Level Manifestation Blocks","level":"1.3.1.2.3.1","depth":5,"anchor":"#item-level-manifestation-blocks","path":"edf.md","ref":"edf.md#item-level-manifestation-blocks","articles":[]}]},{"title":"Attribution Block","level":"1.3.1.2.4","depth":4,"anchor":"#attribution-block","path":"edf.md","ref":"edf.md#attribution-block","articles":[]},{"title":"Expression Types","level":"1.3.1.2.5","depth":4,"anchor":"#expression-types","path":"edf.md","ref":"edf.md#expression-types","articles":[]}]}]},"previous":{"title":"Item","level":"1.2.2.2","depth":3,"anchor":"#item","path":"project-desc-file.md","ref":"project-desc-file.md#item","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"edf.md","mtime":"2018-06-26T06:59:00.487Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-26T06:59:13.904Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
