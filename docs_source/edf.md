@@ -346,6 +346,8 @@ Item level manifestation blocks note that that this item can be found in a given
 
 ## Description
 
+The attribution block contains information on the modern persons and institutions who contributed to the EDF file.
+
 Any level of the hierarchy could take an attribution block and will apply to all children blocks.
 In most cases, only the top level block would take this. But when there are multiple parties
 responsible for different ranges with the hierarchy, lower level attribution blocks can be added.
