@@ -138,16 +138,44 @@ The `titleStmt` contains a set of elements indicating different types of titles 
 
 The order of the elements determines the default title by the first child node. If the `structureTitle` is empty, the following field will give the title. The structure of the items **MUST** be the following:
 
+The title elements can either contain a string (text-node) or any number of `<title>`-elements, but never both. This can be used to localize titles to different languages with the `@xml:lang` attribute. If a processor cannot find an intended language it is recommended that it chooses the first element as the default. 
+
+
+## Examples
+Simple example of a first level `titleStmt` indicating the title of a whole work.
+
 ```xml
 <titleStmt>
-    <structureTitle />
-    <alternativeTitle />
-    <descriptiveTitle />
-    <questionTitle />
+  <structureTitle>Commentarius sententiarum</structureTitle>
+  <alternativeTitle>Ordinatio</alternativeTitle>
+  <descriptiveTitle />
+  <questionTitle />
 </titleStmt>
 ```
 
-Use of different title fields: 
+Example of use of the localization options.
+
+```xml
+<titleStmt>
+  <structureTitle>
+    <title xml:lang="la">Quaestio 13</title>
+    <title xml:lang="en">Question 13</title>
+    <title xml:lang="da">Kvæstion 13</title>
+  </structureTitle>
+  <descriptiveTitle>
+    <title xml:lang="la">De signis</title>
+    <title xml:lang="en">On signs</title>
+    <title xml:lang="da">Om tegn</title>
+  </descriptiveTitle>
+  <questionTitle>
+    <title xml:lang="la">Utrum persona significet substantiam</title>
+    <title xml:lang="en">Whether person signifies a substance</title>
+    <title xml:lang="da">Hvorvidt person betegner en substans</title>
+  </questionTitle>
+</titleStmt>
+```
+
+Use of different title fields:
 - `structureTitle` indicates a place in the structure of the text, such as "Article 3". 
 - `alternativeTitle` indicates an alternative name of a given question. There can be 0 to many alternative titles listed
 - `descriptiveTitle` indicates a descriptive statement on the subject of the text. 
@@ -160,6 +188,9 @@ Use of different title fields:
 - `titleStmt` **MAY ONLY** contain 0 or 1 instance of `structureTitle`, `alternativeTitle`, `descriptiveTitle`.
 - `titleStmt` **MAY** contain any number of `alternativeTitle` elements.
 - `structureTitle` **MAY** containt `@n` and `@label` to indicate in a machine-readable the position in the structure of the work.
+- `structureTitle`, `alternativeTitle`, `descriptiveTitle`, and `questionTitle` **MAY** contain one or more `title` elements.
+- `structureTitle`, `alternativeTitle`, `descriptiveTitle`, and `questionTitle` **MAY NOT** contain both one or more `title` elements and a text-node as its children.
+- `title` **MAY** contain `@xml:lang`.
 
 
 # Top Level Manifestation Blocks
@@ -314,6 +345,8 @@ Item level manifestation blocks note that that this item can be found in a given
 # Attribution Block
 
 ## Description
+
+The attribution block contains information on the modern persons and institutions who contributed to the EDF file.
 
 Any level of the hierarchy could take an attribution block and will apply to all children blocks.
 In most cases, only the top level block would take this. But when there are multiple parties
