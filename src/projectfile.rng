@@ -134,6 +134,9 @@
     <element name="div">
       <attribute name="id"/>
       <optional>
+        <attribute name="alias"/>
+      </optional>
+      <optional>
         <attribute name="class"/>
       </optional>
       <optional>
@@ -160,6 +163,9 @@
     <element name="item">
       <optional>
         <attribute name="id"/>
+      </optional>
+      <optional>
+        <attribute name="alias"/>
       </optional>
       <optional>
         <attribute name="type"/>
