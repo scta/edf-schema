@@ -19,6 +19,11 @@
       <element name="commentaryslug">
         <text/>
       </element>
+      <optional>
+        <element name="alias">
+          <text/>
+        </element>
+      </optional>
       <element name="authorUri">
         <text/>
       </element>
