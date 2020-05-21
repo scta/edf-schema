@@ -27,15 +27,19 @@
       <element name="authorUri">
         <text/>
       </element>
-      <element name="parentUri">
-        <text/>
-      </element>
+      <optional>
+        <element name="parentUri">
+          <text/>
+        </element>
+      </optional>
       <element name="parentWorkGroup">
         <text/>
       </element>
-      <element name="textfilesdir">
-        <text/>
-      </element>
+      <optional>
+        <element name="textfilesdir">
+          <text/>
+        </element>
+      </optional>
       <element name="questionListSource">
         <text/>
       </element>
