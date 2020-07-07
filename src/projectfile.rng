@@ -104,6 +104,11 @@
                   <text/>
                 </element>
               </optional>
+              <optional>
+                <element name="editor">
+                  <text/>
+                </element>
+              </optional>
             </element>
           </zeroOrMore>
           <text/>
