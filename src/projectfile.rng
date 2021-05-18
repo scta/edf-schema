@@ -90,6 +90,11 @@
               <attribute name="id">
                 <text/>
               </attribute>
+              <optional>
+                <attribute name="canonical">
+                  <a:documentation>indicates that witness should be used as canonical manifestation; if no witness is declared canonical, then a critical manifestation will be built by default</a:documentation>
+                </attribute>
+              </optional>
               <element name="slug">
                 <text/>
               </element>
